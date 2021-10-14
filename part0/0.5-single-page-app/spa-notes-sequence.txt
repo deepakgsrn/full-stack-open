@@ -1,0 +1,27 @@
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server->browser: HTML Content 
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server->browser: spa.js
+
+note over browser
+browser executes the js code in spa.js
+and makes an AJAX call to fetch data.json
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server->browser: data.json
+note over server
+server responds back with the 
+json array of notes
+
+[{"content":"Hello from Australia! :)","date":"2021-10-14T01:02:53.036Z"} ...]
+end note
+
+
+
+note over browser
+browser parses the data.json 
+and renders the notes in the UI
+end note

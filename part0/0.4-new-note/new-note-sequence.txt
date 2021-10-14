@@ -1,0 +1,30 @@
+browser->server: HTTP   POST    https://studies.cs.helsinki.fi/exampleapp/new_note
+server->browser: Redirect request to /exampleapp/notes with status code 302
+browser->server: HTTP   GET     https://studies.cs.helsinki.fi/exampleapp/notes
+server->browser: HTML Content
+browser->server: HTTP   GET     https://studies.cs.helsinki.fi/exampleapp/main.css
+server->browser: main.css
+browser->server: HTTP   GET     https://studies.cs.helsinki.fi/exampleapp/main.js
+server->browser: main.js
+
+note over browser
+browser executes js code & sents 
+AJAX request to fetch data.json 
+from server
+end note
+
+browser->server: HTTP   GET     https://studies.cs.helsinki.fi/exampleapp/data.json
+server->browser: JSON array as response
+
+note over server
+server sent's the json array with notes 
+as response back to the browser
+[{ "content":"Hi From Peru!",
+    "date":"2021-10-14T00:00:24.461Z"}, 
+....]
+end note
+
+note over browser
+browser parses the json array 
+and renders the data 
+end note 
