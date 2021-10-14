@@ -9,4 +9,4 @@ Instructor :
 - Matti Luukkainen matti.luukkainen@helsinki.fi | GitHub : [mluukkai](https://github.com/mluukkai)
 - Kalle Ilves                                   | GitHub : [kaltsoon](https://github.com/Kaltsoon)
 
-Collaborate @ [discord](https://discord.com/channels/757581218085863474/867514950254985227) Invitation link for the server https://study.cs.helsinki.fi/discord
+Collaborate @ [discord](https://discord.com/channels/757581218085863474/867514950254985227) | Invitation link for the server https://study.cs.helsinki.fi/discord
