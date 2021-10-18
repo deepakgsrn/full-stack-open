@@ -9,6 +9,14 @@ const Statistics = (props) => {
   const averageFeedback = ((good - bad)/totalNoOfFeedback)>0 ? (good - bad)/totalNoOfFeedback : 0
   const positivePercentage = (good/totalNoOfFeedback) > 0 ? (good/totalNoOfFeedback) * 100 : 0
 
+if(totalNoOfFeedback <= 0){
+  return (
+    <div>
+      <h2>Statistics</h2>
+      <p>No Feedback Given</p>
+    </div>
+  )
+}
   return (
     <div>
       <h2>Statistics</h2>
