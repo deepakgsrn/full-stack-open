@@ -67,13 +67,37 @@ const App = () => {
       setAnecdotes(newAnecdotes);
     }
 
+    const getMostVotedAnecdote = () => {
+      const mostVoted = Object.entries(anecdotes)
+            .map(e => {
+              return {'id': e[0], 'vote': e[1].vote}})
+            .reduce((accumulator, currentValue) => {
+              if(accumulator && (accumulator.vote > currentValue.vote)){
+                return accumulator;
+              } else if(accumulator && (accumulator.vote === currentValue.vote)){
+                return {...accumulator, 'ids': [...accumulator.ids, currentValue.id]};
+              } else {
+                return {'vote': currentValue.vote, 'ids': [currentValue.id]};
+              }
+            }, 0);
+
+      return mostVoted;
+    }
+
+    const getMostVotedAnecdoteIndex = () => {
+      const mostVoted = getMostVotedAnecdote();
+      return mostVoted.ids[Math.floor(Math.random() * mostVoted.ids.length)];
+    }
+
     return (
       <div>
         <h1>anecdote of the day !</h1>
         <p>{`${anecdotes[selectedIndex]['anecdote']}`}</p>
-        <p>Has {`${anecdotes[selectedIndex]['vote']}`} votes</p>
+        <p>has {`${anecdotes[selectedIndex]['vote']}`} votes</p>
         <Button text="Vote" onClick = {handleVote} />
         <Button text="Next Anecdote" onClick = {handleNextAnecdote} />
+        <h1>anecdotes with most votes</h1>
+        <p>{`${anecdotes[getMostVotedAnecdoteIndex()]['anecdote']}`}</p><p> has {getMostVotedAnecdote().vote} votes</p>
       </div>
     );
 }
