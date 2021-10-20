@@ -4,11 +4,16 @@ import './index.css';
 
 const Part = ({part}) => <li>{part.name} {part.exercises}</li>
 
+const Total = ({course}) => <p>Total of {course.parts.reduce((sum, part) => sum + part.exercises ,0)} exercises</p>
+
 const Content = ({course}) => {
   return (
-    <ul>
-      {course.parts.map(p => <Part key={p.id} part={p}/>)}
-    </ul>
+    <>
+      <ul>
+        {course.parts.map(p => <Part key={p.id} part={p}/>)}
+      </ul>
+      <Total course = {course} />
+    </>
   )
 }
 const Header = ({course}) => <h1>{course.name}</h1>
