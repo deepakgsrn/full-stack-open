@@ -4,10 +4,12 @@ import './index.css'
 const App = () => {
 
   const [people, setPeople] = useState([
-    {'name': 'Arto Hellas'},
+    {'name': 'Arto Hellas', 'number':'9090909090'},
   ])
 
   const [newName, setNewName] = useState('')
+  const [newNumber, setNewNumber] = useState('');
+
 
 
   const addPerson = (event) => {
@@ -20,12 +22,17 @@ const App = () => {
       alert(`${newName} is already added to phonebook`); return;
     }
 
-    setPeople(people.concat({'name': newName}))
+    setPeople(people.concat({'name': newName, 'number': newNumber}))
     setNewName('')
+    setNewNumber('')
   }
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
+  }
+
+  const handleNumberChange = (event) => {
+    setNewNumber(event.target.value)
   }
 
   const isNameExist = (name) => people.find(function(e){
@@ -37,7 +44,10 @@ const App = () => {
     <h2>Phonebook</h2>
     <form onSubmit = {addPerson}>
       <div>
-        <input value = {newName} onChange = {handleNameChange} />
+        Name : <input value = {newName} onChange = {handleNameChange} />
+      </div>
+      <div>
+        Number : <input value = {newNumber} onChange = {handleNumberChange} />
       </div>
       <div>
         <button type = "submit">add</button>
@@ -45,7 +55,7 @@ const App = () => {
     </form>
     <h2>Numbers</h2>
     <ul>
-    {people.map(e => <li key = {e.name}>{e.name}</li>)}
+    {people.map(e => <li key = {e.name}>{e.name} {e.number}</li>)}
     </ul>
     </div>
   )
