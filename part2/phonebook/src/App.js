@@ -12,6 +12,14 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
+
+    if(newName.trim() === ''){
+      alert(`Name cannot be empty`); return;
+    }
+    else if(isNameExist(newName)){
+      alert(`${newName} is already added to phonebook`); return;
+    }
+
     setPeople(people.concat({'name': newName}))
     setNewName('')
   }
@@ -19,6 +27,10 @@ const App = () => {
   const handleNameChange = (event) => {
     setNewName(event.target.value)
   }
+
+  const isNameExist = (name) => people.find(function(e){
+    return e.name === this;
+  },name);
 
   return (
     <div>
